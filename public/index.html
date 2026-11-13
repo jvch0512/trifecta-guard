@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<title>trifecta-guard</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>trifecta-guard</h1>
+    <p class="sub">Paste an LLM agent's tool manifest and a recorded trace. See whether the agent holds the lethal trifecta, whether an injected instruction steered a call to an attacker-controlled destination, what private data left, and what a policy would have blocked. Runs in this tab, nothing is uploaded.</p>
+  </div>
+  <div class="row"><button type="button" data-trace="attack.jsonl">Attack trace</button><button type="button" data-trace="benign.jsonl">Benign trace</button></div>
+</header>
+<main>
+  <div class="panel">
+    <h2>Tool manifest (JSON)</h2>
+    <textarea id="tools" rows="9" spellcheck="false"></textarea>
+    <h2>Trace (JSON Lines: user, tool_call, tool_result)</h2>
+    <textarea id="trace" rows="10" spellcheck="false"></textarea>
+    <h2>Destination allowlist (optional, comma separated)</h2>
+    <input id="allow" type="text" spellcheck="false" placeholder="mycompany.example, @partner.example">
+    <p class="hint">Capabilities: private-data, untrusted-input, external-comms, state-change. A destination is attacker-controlled when it appears in untrusted tool output but never in the user's request.</p>
+  </div>
+  <div id="out"></div>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

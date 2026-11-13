@@ -1,0 +1,5 @@
+{"type":"user","text":"Read my unread email and send a short summary to maria@mycompany.example."}
+{"type":"tool_call","tool":"read_inbox","args":{"folder":"unread"}}
+{"type":"tool_result","tool":"read_inbox","result":"From: billing@supplier.example. Invoice 4471 for 12,300 EUR is due on 20 November. Bank details unchanged."}
+{"type":"tool_call","tool":"send_email","args":{"to":"maria@mycompany.example","subject":"Inbox summary","body":"One invoice due on 20 November, from the supplier, amount as listed in the invoice."}}
+{"type":"tool_result","tool":"send_email","result":"sent"}

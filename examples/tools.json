@@ -1,0 +1,10 @@
+{
+  "agent": "inbox-assistant",
+  "tools": [
+    { "name": "read_inbox", "caps": ["private-data", "untrusted-input"] },
+    { "name": "search_files", "caps": ["private-data"] },
+    { "name": "fetch_url", "caps": ["untrusted-input"] },
+    { "name": "send_email", "caps": ["external-comms"], "destinationArgs": ["to", "cc"] },
+    { "name": "create_event", "caps": ["state-change"] }
+  ]
+}
